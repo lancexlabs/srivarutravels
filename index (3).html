@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Varu Travels – Premium Travel Across South India</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- PAGE LOAD CURTAIN -->
+<div id="page-curtain">
+  <div class="curtain-logo">🚗 Sri Varu Travels</div>
+  <div class="curtain-bar"><div class="curtain-bar-fill"></div></div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="back-top" title="Back to top">↑</button>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">🚗</div>
+    <div class="logo-text">
+      <strong>Sri Varu Travels</strong>
+      <span>Nerkundram, Chennai</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#fleet">Fleet</a></li>
+    <li><a href="#pilgrimage">State Trips</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+917299921960" class="nav-cta">📞 Book Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-circles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✈ South India's #1 Travel Partner</div>
+    <h1>
+      Explore <em>South India</em><br>in Pure Comfort
+    </h1>
+    <p>Premium, professional travel services across Tamil Nadu, Kerala, Karnataka & Andhra. Airport pickups, outstation trips, pilgrimages & international packages — all with trusted drivers and transparent pricing.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">🚀 Book Your Trip</a>
+      <a href="tel:+917299921960" class="btn-outline">📞 Call Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>5K+</strong><span>Happy Clients</span></div>
+      <div class="stat"><strong>8+</strong><span>Years Experience</span></div>
+      <div class="stat"><strong>24/7</strong><span>Availability</span></div>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <div class="hero-card-float">
+      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Travel South India">
+    </div>
+    <div class="floating-badge-1">
+      <div class="fb-icon">🛡️</div>
+      <div class="fb-text"><strong>100% Safe</strong><span>Verified Drivers</span></div>
+    </div>
+    <div class="floating-badge-2">
+      <div class="fb-icon">⭐</div>
+      <div class="fb-text"><strong>4.9 Rating</strong><span>500+ Reviews</span></div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 40 Q360 80 720 40 Q1080 0 1440 40 L1440 80 L0 80 Z" fill="#fdf8ef"/>
+  </svg>
+</section>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+  <div class="highlights-track" id="hlTrack">
+    <span class="hl-item"><span class="dot"></span>24/7 Availability</span>
+    <span class="hl-item"><span class="dot"></span>Experienced Professional Drivers</span>
+    <span class="hl-item"><span class="dot"></span>Clean & Well-Maintained Vehicles</span>
+    <span class="hl-item"><span class="dot"></span>Transparent Pricing — No Hidden Charges</span>
+    <span class="hl-item"><span class="dot"></span>Airport Pickup & Drop</span>
+    <span class="hl-item"><span class="dot"></span>Outstation & One-Way Trips</span>
+    <span class="hl-item"><span class="dot"></span>Sri Lanka Wedding Travel Package</span>
+    <span class="hl-item"><span class="dot"></span>Corporate Travel Solutions</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="hl-item"><span class="dot"></span>24/7 Availability</span>
+    <span class="hl-item"><span class="dot"></span>Experienced Professional Drivers</span>
+    <span class="hl-item"><span class="dot"></span>Clean & Well-Maintained Vehicles</span>
+    <span class="hl-item"><span class="dot"></span>Transparent Pricing — No Hidden Charges</span>
+    <span class="hl-item"><span class="dot"></span>Airport Pickup & Drop</span>
+    <span class="hl-item"><span class="dot"></span>Outstation & One-Way Trips</span>
+    <span class="hl-item"><span class="dot"></span>Sri Lanka Wedding Travel Package</span>
+    <span class="hl-item"><span class="dot"></span>Corporate Travel Solutions</span>
+  </div>
+</div>
+
+<!-- BOOKING BAR -->
+<div class="booking-bar reveal">
+  <div class="bb-field">
+    <label>Trip Type</label>
+    <select>
+      <option>One Way</option>
+      <option>Round Trip</option>
+      <option>Airport Transfer</option>
+      <option>Outstation</option>
+    </select>
+  </div>
+  <div class="bb-field">
+    <label>From</label>
+    <input type="text" placeholder="Pickup location">
+  </div>
+  <div class="bb-field">
+    <label>To</label>
+    <input type="text" placeholder="Drop location">
+  </div>
+  <div class="bb-field">
+    <label>Date</label>
+    <input type="date">
+  </div>
+  <div class="bb-field">
+    <label>Vehicle</label>
+    <select>
+      <option>Sedan</option>
+      <option>SUV / Innova</option>
+      <option>Tempo Traveller</option>
+      <option>Luxury</option>
+    </select>
+  </div>
+  <button class="bb-btn">Search →</button>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Every Journey Across <em>Tamil Nadu</em><br>& South India</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;">
+      <p class="section-sub" style="text-align:right;">Trusted cab service for every need — from daily rides to luxury fleet for your biggest moments.</p>
+      <a href="#contact" class="btn-primary" style="white-space:nowrap;">💬 Book Any Service</a>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="sc-icon">🗺️</div>
+      <div class="sc-title">Outstation Tours</div>
+      <div class="sc-desc">Customized outstation cab packages from Chennai to Bangalore, Madurai, Coimbatore & all across South India.</div>
+      <a class="sc-link" href="#contact">Book Now →</a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="sc-icon">🕌</div>
+      <div class="sc-title">Pilgrimage Trips</div>
+      <div class="sc-desc">Spiritual cab service to Tirupati, Rameswaram, Velankanni & Madurai Meenakshi Temple — travel with peace of mind.</div>
+      <a class="sc-link" href="#contact">Book Now →</a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="sc-icon">💍</div>
+      <div class="sc-title">Wedding & Events</div>
+      <div class="sc-desc">Premium Innova Crysta & Volvo luxury fleet for weddings, receptions and family functions across Chennai.</div>
+      <a class="sc-link" href="#contact">Book Now →</a>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="sc-icon">✈️</div>
+      <div class="sc-title">Airport Transfers</div>
+      <div class="sc-desc">Reliable 24/7 cab pickup & drop to Chennai International Airport — flight tracking included, never miss a flight.</div>
+      <a class="sc-link" href="#contact">Book Now →</a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="sc-icon">🏢</div>
+      <div class="sc-title">Corporate Rentals</div>
+      <div class="sc-desc">Monthly & daily contract cabs for IT companies and corporates across Chennai & Tamil Nadu. Dedicated account support.</div>
+      <a class="sc-link" href="#contact">Book Now →</a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="sc-icon">🚌</div>
+      <div class="sc-title">Group Travel</div>
+      <div class="sc-desc">Tempo Travellers (12–17 seater) & Volvo Luxury Buses for school trips, corporate outings and group tours.</div>
+      <a class="sc-link" href="#contact">Book Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<div class="pkg-overlay" id="pkgOverlay"></div>
+
+<section class="packages-section" id="packages">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">Travel Packages</div>
+    <h2 class="section-title">Our <em>Featured</em> Packages</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.6);margin:0 auto;">Click any package to explore full details. Scroll or press × to close.</p>
+  </div>
+  <div class="packages-grid" style="grid-template-columns:1fr 1fr;max-width:900px;margin:48px auto 0;">
+
+    <div class="pkg-card reveal reveal-delay-1" id="pkg1" onclick="expandPkg('pkg1')">
+      <div class="pkg-bg" style="background-image: url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80');"></div>
+      <button class="pkg-close" onclick="closePkg(event, 'pkg1')">✕</button>
+      <div class="pkg-card-inner">
+        <div class="pkg-tag">🌟 Premium</div>
+        <div class="pkg-title">Sri Lanka Wedding Travel</div>
+        <div class="pkg-meta">
+          <span>🌍 International</span>
+          <span>📅 Custom Duration</span>
+        </div>
+        <div class="pkg-desc">End-to-end travel solution for families planning wedding journeys to Sri Lanka. We coordinate everything — from India to Sri Lanka — so you focus on celebrating.</div>
+        <ul class="pkg-includes">
+          <li>Airport Pickup &amp; Drop (India &amp; Sri Lanka)</li>
+          <li>Travel Planning &amp; Full Coordination</li>
+          <li>Hotel Arrangement Assistance</li>
+          <li>Marriage Event Support &amp; Local Help</li>
+          <li>Dedicated Local Transportation</li>
+          <li>Return Travel Planning &amp; Execution</li>
+        </ul>
+        <button class="pkg-btn" onclick="(function(e){e.stopPropagation();window.location='#contact';})(event)">Enquire Now</button>
+      </div>
+    </div>
+
+    <div class="pkg-card reveal reveal-delay-2" id="pkg2" onclick="expandPkg('pkg2')">
+      <div class="pkg-bg" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80');"></div>
+      <button class="pkg-close" onclick="closePkg(event, 'pkg2')">✕</button>
+      <div class="pkg-card-inner">
+        <div class="pkg-tag">🗺️ Outstation</div>
+        <div class="pkg-title">South India Explorer</div>
+        <div class="pkg-meta">
+          <span>🚗 Multi-City</span>
+          <span>📅 2–7 Days</span>
+        </div>
+        <div class="pkg-desc">Customized road trip packages from Chennai covering Tamil Nadu, Karnataka, Kerala and Andhra Pradesh. One-way or round trip — your choice, our comfort.</div>
+        <ul class="pkg-includes">
+          <li>Chennai ↔ Bangalore / Mysuru</li>
+          <li>Chennai ↔ Madurai / Rameswaram</li>
+          <li>Chennai ↔ Ooty / Kodaikanal</li>
+          <li>Chennai ↔ Vizag / Tirupati</li>
+          <li>AC Sedan, Innova or Tempo Traveller</li>
+          <li>Experienced Driver, Flexible Stops</li>
+        </ul>
+        <button class="pkg-btn" onclick="(function(e){e.stopPropagation();window.location='#contact';})(event)">Enquire Now</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet-section" id="fleet">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">Our Fleet</div>
+    <h2 class="section-title">Choose Your <em>Ride</em></h2>
+    <p class="section-sub" style="margin:0 auto;">All vehicles are regularly serviced, sanitized, and driven by licensed professionals.</p>
+  </div>
+  <div class="fleet-slider-wrap reveal">
+    <div class="fleet-track" id="fleetTrack">
+      <div class="fleet-card">
+        <div class="fleet-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&q=80" alt="Sedan"></div>
+        <div class="fleet-info">
+          <h4>Sedan</h4>
+          <p>Swift Dzire / Toyota Etios</p>
+          <p style="font-size:12px;color:#999;margin-top:4px;">Ideal for 1–4 passengers</p>
+          <span class="fleet-tag">Economy</span>
+        </div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="Innova Crysta"></div>
+        <div class="fleet-info">
+          <h4>SUV / Innova Crysta</h4>
+          <p>Toyota Innova / Ertiga</p>
+          <p style="font-size:12px;color:#999;margin-top:4px;">Perfect for groups of 6–7</p>
+          <span class="fleet-tag">Popular ⭐</span>
+        </div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img"><img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=80" alt="Tempo Traveller"></div>
+        <div class="fleet-info">
+          <h4>Tempo Traveller</h4>
+          <p>12–17 Seater</p>
+          <p style="font-size:12px;color:#999;margin-top:4px;">Best for large group tours</p>
+          <span class="fleet-tag">Group</span>
+        </div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80" alt="Volvo Bus"></div>
+        <div class="fleet-info">
+          <h4>Volvo Luxury Bus</h4>
+          <p>On Special Request</p>
+          <p style="font-size:12px;color:#999;margin-top:4px;">Events &amp; premium group tours</p>
+          <span class="fleet-tag">Premium</span>
+        </div>
+      </div>
+      <div class="fleet-card">
+        <div class="fleet-img"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=80" alt="Mini Van"></div>
+        <div class="fleet-info">
+          <h4>Mini Van</h4>
+          <p>Maruti Ertiga / Carens</p>
+          <p style="font-size:12px;color:#999;margin-top:4px;">Compact group travel 6–7</p>
+          <span class="fleet-tag">Family</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fleet-nav">
+    <button class="fleet-btn" id="fleetPrev">←</button>
+    <div class="fleet-dots" id="fleetDots"></div>
+    <button class="fleet-btn" id="fleetNext">→</button>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-section">
+  <div class="why-content reveal">
+    <div class="section-label">Why Sri Varu?</div>
+    <h2 class="section-title">The <em>Trusted</em> Choice<br>Across South India</h2>
+    <ul class="why-list">
+      <li class="why-item">
+        <div class="why-icon">🕐</div>
+        <div class="why-text">
+          <strong>24/7 Availability</strong>
+          <p>Round-the-clock service. Early morning flights, late night pickups — we're always ready.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-icon">👨‍✈️</div>
+        <div class="why-text">
+          <strong>Experienced, Verified Drivers</strong>
+          <p>All drivers are background-checked, licensed, and trained in safe & courteous driving.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-icon">💰</div>
+        <div class="why-text">
+          <strong>Transparent Pricing</strong>
+          <p>What you see is what you pay. No surge charges, no hidden fees — ever.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-icon">🧼</div>
+        <div class="why-text">
+          <strong>Clean & Maintained Vehicles</strong>
+          <p>Every car is sanitized before and after each trip for your comfort and safety.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="why-cta-box reveal reveal-delay-2">
+    <div style="font-size:48px;">📞</div>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:8px;">Call us anytime for instant booking</p>
+    <div class="phone">+91 72999 21960</div>
+    <p>Available 24/7 for all your travel needs across South India</p>
+    <a href="tel:+917299921960" class="btn-primary">Call Now</a>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid #eee;">
+      <a href="https://wa.me/917299921960" style="display:flex;align-items:center;justify-content:center;gap:8px;color:#25D366;font-weight:700;text-decoration:none;font-size:15px;">
+        <span style="font-size:22px;">💬</span> WhatsApp Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATE TRAVEL TRIPS -->
+<section class="pilgrim-section" id="pilgrimage">
+  <div class="reveal">
+    <div class="section-label">Explore India</div>
+    <h2 class="section-title">Travel Trips <em>by State</em></h2>
+    <p class="section-sub">From the coastlines of Tamil Nadu to the hills of Kerala and the heritage of Karnataka — we take you there in comfort.</p>
+  </div>
+  <div class="pilgrim-grid">
+
+    <div class="pilgrim-card featured reveal">
+      <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80');"></div>
+      <div class="pilgrim-overlay">
+        <div class="pilgrim-badge">🌟 Most Popular</div>
+        <div class="pilgrim-title">Kerala — God's Own Country</div>
+        <div class="pilgrim-loc">🌿 Munnar · Alleppey · Wayanad · Kovalam &nbsp;|&nbsp; 4–7 Days</div>
+      </div>
+    </div>
+
+    <div class="pilgrim-card reveal reveal-delay-1">
+      <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=800&q=80');"></div>
+      <div class="pilgrim-overlay">
+        <div class="pilgrim-badge">🏛️ Heritage</div>
+        <div class="pilgrim-title">Karnataka Getaway</div>
+        <div class="pilgrim-loc">📍 Mysuru · Coorg · Hampi · Bengaluru</div>
+      </div>
+    </div>
+
+    <div class="pilgrim-card reveal reveal-delay-2">
+      <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80');"></div>
+      <div class="pilgrim-overlay">
+        <div class="pilgrim-badge">🏖️ Coastal</div>
+        <div class="pilgrim-title">Andhra Pradesh Tour</div>
+        <div class="pilgrim-loc">📍 Vizag · Araku Valley · Tirupati</div>
+      </div>
+    </div>
+
+    <div class="pilgrim-card reveal reveal-delay-1">
+      <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80');"></div>
+      <div class="pilgrim-overlay">
+        <div class="pilgrim-badge">🌊 Beach Escape</div>
+        <div class="pilgrim-title">Tamil Nadu Coastal Trail</div>
+        <div class="pilgrim-loc">📍 Pondicherry · Rameswaram · Kanyakumari</div>
+      </div>
+    </div>
+
+    <div class="pilgrim-card reveal reveal-delay-2">
+      <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1609766857584-4eba44d19b41?w=800&q=80');"></div>
+      <div class="pilgrim-overlay">
+        <div class="pilgrim-badge">🏔️ Hill Station</div>
+        <div class="pilgrim-title">Ooty & Kodaikanal</div>
+        <div class="pilgrim-loc">📍 The Nilgiris, Tamil Nadu</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testi-header reveal">
+    <div>
+      <div class="section-label">Customer Stories</div>
+      <h2 class="section-title">Real Reviews from <em>Google</em> ⭐ 5.0</h2>
+    </div>
+    <div class="testi-nav">
+      <button class="testi-btn" id="testiPrev">←</button>
+      <button class="testi-btn" id="testiNext">→</button>
+    </div>
+  </div>
+  <div style="overflow:hidden;">
+    <div class="testi-track" id="testiTrack" style="display:flex;gap:28px;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);">
+      <div class="testi-card" style="flex:0 0 calc(33.333% - 19px);min-width:300px;">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The travel experience was excellent. The car was clean and comfortable, and the driver was polite and punctual. The ride was smooth and overall service was very professional. Highly satisfied!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1a6b4a,#e8a020)">S</div>
+          <div class="testi-name"><strong>Satisfied Client</strong><span>Chennai → Tirupati · Google ⭐ 5.0</span></div>
+        </div>
+      </div>
+      <div class="testi-card" style="flex:0 0 calc(33.333% - 19px);min-width:300px;">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"I'm extremely satisfied with the travel experience. The car was in perfect condition, the trip was hassle-free. The driver maintained good communication and ensured a safe ride. Truly value for money!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#0f4630,#2d9e70)">V</div>
+          <div class="testi-name"><strong>Verified Client</strong><span>Outstation Trip · Google ⭐ 5.0</span></div>
+        </div>
+      </div>
+      <div class="testi-card" style="flex:0 0 calc(33.333% - 19px);min-width:300px;">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"We booked for a family trip and it was a wonderful experience. The vehicle was spacious and clean, and the driver was courteous and patient. We felt very comfortable and safe the whole time!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1a6b4a,#f5c842)">F</div>
+          <div class="testi-name"><strong>Family Trip Client</strong><span>Chennai → Madurai · Google ⭐ 5.0</span></div>
+        </div>
+      </div>
+      <div class="testi-card" style="flex:0 0 calc(33.333% - 19px);min-width:300px;">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"It was a pleasant journey from start to end. The car was well-maintained and the driver ensured a smooth, safe trip. Very happy with the overall experience!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#e8a020,#1a6b4a)">P</div>
+          <div class="testi-name"><strong>Priya R.</strong><span>Airport Transfer · Google ⭐ 5.0</span></div>
+        </div>
+      </div>
+      <div class="testi-card" style="flex:0 0 calc(33.333% - 19px);min-width:300px;">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Superb travel service at an affordable price. The car was neat, comfortable, and the driver was polite and cooperative. Totally worth the money — will book again soon!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#2d9e70,#e8a020)">A</div>
+          <div class="testi-name"><strong>Arjun K.</strong><span>Corporate Rental · Google ⭐ 5.0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:center;gap:8px;margin-top:28px;" id="testiDots">
+    <span style="width:24px;height:8px;border-radius:4px;background:var(--green);cursor:pointer;transition:all .3s;display:inline-block"></span>
+    <span style="width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:all .3s;display:inline-block"></span>
+    <span style="width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:all .3s;display:inline-block"></span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-info reveal">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Ready to <em>Travel?</em><br>Let's Plan It!</h2>
+    <p>Contact us today for a quick quote, package inquiry, or instant booking. We respond to every message within minutes.</p>
+    <div class="contact-methods">
+      <a href="https://wa.me/917299921960" class="cm-item">
+        <div class="cm-icon green">💬</div>
+        <div class="cm-text"><strong>WhatsApp — 72999 21960</strong><span>Instant reply — fastest way to book</span></div>
+      </a>
+      <a href="tel:+917299921960" class="cm-item">
+        <div class="cm-icon orange">📞</div>
+        <div class="cm-text"><strong>+91 72999 21960</strong><span>Primary — Parthiban, 24/7</span></div>
+      </a>
+      <a href="tel:+919940321960" class="cm-item">
+        <div class="cm-icon orange">📞</div>
+        <div class="cm-text"><strong>+91 99403 21960</strong><span>Alternate number</span></div>
+      </a>
+      <a href="mailto:info@srivarutravels.com" class="cm-item">
+        <div class="cm-icon blue">✉️</div>
+        <div class="cm-text"><strong>info@srivarutravels.com</strong><span>Email enquiries</span></div>
+      </a>
+    </div>
+    <div style="border-radius:18px;overflow:hidden;border:3px solid rgba(255,255,255,.15);margin-top:4px">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.544229743305!2d80.18244997507765!3d13.065743087267847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52610064678ea9%3A0xb0d48e3350592981!2sSri%20Varu%20Travels!5e0!3m2!1sen!2sin!4v1710850000000!5m2!1sen!2sin"
+        width="100%" height="230" style="border:none;display:block"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:16px;margin-top:14px">
+      <strong style="color:#fff;font-size:14px;display:block;margin-bottom:4px">&#x1F4CD; Sri Varu Travels — Parthiban</strong>
+      <p style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.7">No.4A Sekkilar Street, Nethaji Avenue,<br>Nerkundram, Koyembedu, Chennai – 600107</p>
+    </div>
+  </div>
+
+  <div class="contact-form reveal reveal-delay-2">
+    <h3>Send Us a Message</h3>
+    <div class="form-row">
+      <div class="form-field"><label>Your Name</label><input type="text" placeholder="e.g. Ramesh Kumar"></div>
+      <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+    </div>
+    <div class="form-field"><label>Trip Type</label>
+      <select>
+        <option>Select trip type...</option>
+        <option>Local City Ride</option>
+        <option>Outstation Trip</option>
+        <option>Airport Transfer</option>
+        <option>Pilgrimage Tour</option>
+        <option>Sri Lanka Wedding Package</option>
+        <option>Corporate Travel</option>
+        <option>Kerala / Tourist Package</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>From</label><input type="text" placeholder="Pickup city / location"></div>
+      <div class="form-field"><label>Travel Date</label><input type="date"></div>
+    </div>
+    <div class="form-field"><label>Message</label><textarea placeholder="Tell us more about your trip requirements..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">Send Enquiry →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="margin-bottom:0;">
+        <div class="logo-icon">🚗</div>
+        <div class="logo-text">
+          <strong style="color:white;">Sri Varu Travels</strong>
+          <span style="color:rgba(255,255,255,0.5);">Nerkundram, Chennai</span>
+        </div>
+      </a>
+      <p>Premium and professional travel services across Tamil Nadu, Kerala, Karnataka & Andhra. Your comfort, safety, and satisfaction are our top priorities.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">📘</a>
+        <a href="#" class="social-btn">📸</a>
+        <a href="#" class="social-btn">▶️</a>
+        <a href="https://wa.me/917299921960" class="social-btn">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Outstation Tours</a></li>
+        <li><a href="#services">Pilgrimage Trips</a></li>
+        <li><a href="#services">Wedding & Events</a></li>
+        <li><a href="#services">Airport Transfers</a></li>
+        <li><a href="#services">Corporate Rentals</a></li>
+        <li><a href="#services">Group Travel</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Packages</h4>
+      <ul>
+        <li><a href="#packages">Sri Lanka Wedding</a></li>
+        <li><a href="#pilgrimage">Kerala Tour</a></li>
+        <li><a href="#pilgrimage">Karnataka Getaway</a></li>
+        <li><a href="#pilgrimage">Andhra Pradesh Tour</a></li>
+        <li><a href="#pilgrimage">Ooty & Kodaikanal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+917299921960">+91 72999 21960</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#a1c8cfc7cee1d2d3c8d7c0d3d4d5d3c0d7c4cdd28fc2cecc"><span class="__cf_email__" data-cfemail="4920272f26093a3b203f283b3c3d3b283f2c253a672a2624">[email&#160;protected]</span></a></li>
+        <li><a href="https://maps.app.goo.gl/5MawuQbNCD5xZ2nu7" target="_blank">Nerkundram, Chennai 600107</a></li>
+        <li><a href="https://wa.me/917299921960">WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sri Varu Travels. All Rights Reserved.</p>
+    <p>Designed & Developed by <a href="#">LanceX Labs</a></p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/917299921960" class="whatsapp-float" target="_blank" title="WhatsApp Us">💬</a>
+
+<script src="script.js"></script>
+</body>
+</html>
