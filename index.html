@@ -7,17 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-</head>
-<body>
+<body class="page-loading">
 
 <!-- SCROLL PROGRESS -->
 <div id="scroll-progress"></div>
-
-<!-- PAGE LOAD CURTAIN -->
-<div id="page-curtain">
-  <div class="curtain-logo">🚗 Sri Varu Travels</div>
-  <div class="curtain-bar"><div class="curtain-bar-fill"></div></div>
-</div>
 
 <!-- BACK TO TOP -->
 <button id="back-top" title="Back to top">↑</button>
@@ -25,7 +18,10 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="logo">
-    <div class="logo-icon">🚗</div>
+    <div class="logo-icon">
+      <img src="logo.png" alt="Sri Varu Travels Logo" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="logo-fallback">SV</span>
+    </div>
     <div class="logo-text">
       <strong>Sri Varu Travels</strong>
       <span>Nerkundram, Chennai</span>
@@ -81,7 +77,7 @@
   </svg>
 </section>
 
-<!-- HIGHLIGHTS -->
+<!-- HIGHLIGHTS MARQUEE -->
 <div class="highlights">
   <div class="highlights-track" id="hlTrack">
     <span class="hl-item"><span class="dot"></span>24/7 Availability</span>
@@ -92,7 +88,6 @@
     <span class="hl-item"><span class="dot"></span>Outstation & One-Way Trips</span>
     <span class="hl-item"><span class="dot"></span>Sri Lanka Wedding Travel Package</span>
     <span class="hl-item"><span class="dot"></span>Corporate Travel Solutions</span>
-    <!-- Duplicate for seamless loop -->
     <span class="hl-item"><span class="dot"></span>24/7 Availability</span>
     <span class="hl-item"><span class="dot"></span>Experienced Professional Drivers</span>
     <span class="hl-item"><span class="dot"></span>Clean & Well-Maintained Vehicles</span>
@@ -104,40 +99,82 @@
   </div>
 </div>
 
-<!-- BOOKING BAR -->
-<div class="booking-bar reveal">
-  <div class="bb-field">
-    <label>Trip Type</label>
-    <select>
-      <option>One Way</option>
-      <option>Round Trip</option>
-      <option>Airport Transfer</option>
-      <option>Outstation</option>
-    </select>
+<!-- BOOKING SECTION (was booking bar) -->
+<section class="booking-section reveal">
+  <div class="booking-section-inner">
+    <div class="booking-section-header">
+      <div class="section-label">Plan Your Journey</div>
+      <h2 class="section-title">Quick <em>Trip Planner</em></h2>
+      <p class="section-sub">Tell us where you want to go — we'll take care of the rest.</p>
+    </div>
+    <div class="booking-form-grid">
+      <div class="bf-field">
+        <label>Trip Type</label>
+        <select>
+          <option>One Way</option>
+          <option>Round Trip</option>
+          <option>Airport Transfer</option>
+          <option>Outstation</option>
+        </select>
+      </div>
+      <div class="bf-field">
+        <label>From</label>
+        <input type="text" placeholder="Pickup location">
+      </div>
+      <div class="bf-field">
+        <label>To</label>
+        <input type="text" placeholder="Drop location">
+      </div>
+      <div class="bf-field">
+        <label>Travel Date</label>
+        <input type="date">
+      </div>
+      <div class="bf-field">
+        <label>Vehicle</label>
+        <select>
+          <option>Sedan</option>
+          <option>SUV / Innova</option>
+          <option>Tempo Traveller</option>
+          <option>Luxury</option>
+        </select>
+      </div>
+      <div class="bf-field bf-submit-wrap">
+        <label>&nbsp;</label>
+        <button class="bb-btn">Search Trips →</button>
+      </div>
+    </div>
   </div>
-  <div class="bb-field">
-    <label>From</label>
-    <input type="text" placeholder="Pickup location">
+</section>
+
+<!-- GLASS FEATURE CARDS (below hero/booking) -->
+<section class="glass-cards-section">
+  <div class="glass-cards-grid">
+    <div class="glass-card reveal reveal-delay-1">
+      <div class="gc-glow gc-glow-green"></div>
+      <div class="gc-icon">🕐</div>
+      <h4>24/7 Available</h4>
+      <p>Round-the-clock service for early flights, late pickups, and everything in between.</p>
+    </div>
+    <div class="glass-card reveal reveal-delay-2">
+      <div class="gc-glow gc-glow-gold"></div>
+      <div class="gc-icon">👨‍✈️</div>
+      <h4>Verified Drivers</h4>
+      <p>Every driver is background-checked, licensed, and trained for safe, courteous travel.</p>
+    </div>
+    <div class="glass-card reveal reveal-delay-3">
+      <div class="gc-glow gc-glow-green"></div>
+      <div class="gc-icon">💰</div>
+      <h4>Zero Hidden Fees</h4>
+      <p>What you're quoted is exactly what you pay. Transparent pricing, always.</p>
+    </div>
+    <div class="glass-card reveal reveal-delay-4">
+      <div class="gc-glow gc-glow-gold"></div>
+      <div class="gc-icon">🧼</div>
+      <h4>Spotless Fleet</h4>
+      <p>Every vehicle is sanitized and inspected before and after each trip.</p>
+    </div>
   </div>
-  <div class="bb-field">
-    <label>To</label>
-    <input type="text" placeholder="Drop location">
-  </div>
-  <div class="bb-field">
-    <label>Date</label>
-    <input type="date">
-  </div>
-  <div class="bb-field">
-    <label>Vehicle</label>
-    <select>
-      <option>Sedan</option>
-      <option>SUV / Innova</option>
-      <option>Tempo Traveller</option>
-      <option>Luxury</option>
-    </select>
-  </div>
-  <button class="bb-btn">Search →</button>
-</div>
+</section>
 
 <!-- SERVICES -->
 <section class="services-section" id="services">
@@ -191,26 +228,27 @@
   </div>
 </section>
 
-<!-- PACKAGES -->
+<!-- PACKAGES (Sri Lanka only) -->
 <div class="pkg-overlay" id="pkgOverlay"></div>
 
 <section class="packages-section" id="packages">
   <div style="text-align:center;" class="reveal">
     <div class="section-label">Travel Packages</div>
-    <h2 class="section-title">Our <em>Featured</em> Packages</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,0.6);margin:0 auto;">Click any package to explore full details. Scroll or press × to close.</p>
+    <h2 class="section-title">Our <em>Featured</em> Package</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.6);margin:0 auto;">Click the card to explore full details — scroll or press × to close.</p>
   </div>
-  <div class="packages-grid" style="grid-template-columns:1fr 1fr;max-width:900px;margin:48px auto 0;">
 
-    <div class="pkg-card reveal reveal-delay-1" id="pkg1" onclick="expandPkg('pkg1')">
-      <div class="pkg-bg" style="background-image: url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80');"></div>
+  <div class="pkg-hero-wrap reveal">
+    <div class="pkg-card pkg-hero-card" id="pkg1" onclick="expandPkg('pkg1')">
+      <div class="pkg-bg" style="background-image: url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1400&q=80');"></div>
       <button class="pkg-close" onclick="closePkg(event, 'pkg1')">✕</button>
       <div class="pkg-card-inner">
-        <div class="pkg-tag">🌟 Premium</div>
+        <div class="pkg-tag">🌟 Premium International</div>
         <div class="pkg-title">Sri Lanka Wedding Travel</div>
         <div class="pkg-meta">
-          <span>🌍 International</span>
+          <span>🌍 International Package</span>
           <span>📅 Custom Duration</span>
+          <span>✈️ Full Coordination</span>
         </div>
         <div class="pkg-desc">End-to-end travel solution for families planning wedding journeys to Sri Lanka. We coordinate everything — from India to Sri Lanka — so you focus on celebrating.</div>
         <ul class="pkg-includes">
@@ -221,33 +259,9 @@
           <li>Dedicated Local Transportation</li>
           <li>Return Travel Planning &amp; Execution</li>
         </ul>
-        <button class="pkg-btn" onclick="(function(e){e.stopPropagation();window.location='#contact';})(event)">Enquire Now</button>
+        <button class="pkg-btn" onclick="(function(e){e.stopPropagation();window.location.href='#contact';})(event)">Enquire Now →</button>
       </div>
     </div>
-
-    <div class="pkg-card reveal reveal-delay-2" id="pkg2" onclick="expandPkg('pkg2')">
-      <div class="pkg-bg" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80');"></div>
-      <button class="pkg-close" onclick="closePkg(event, 'pkg2')">✕</button>
-      <div class="pkg-card-inner">
-        <div class="pkg-tag">🗺️ Outstation</div>
-        <div class="pkg-title">South India Explorer</div>
-        <div class="pkg-meta">
-          <span>🚗 Multi-City</span>
-          <span>📅 2–7 Days</span>
-        </div>
-        <div class="pkg-desc">Customized road trip packages from Chennai covering Tamil Nadu, Karnataka, Kerala and Andhra Pradesh. One-way or round trip — your choice, our comfort.</div>
-        <ul class="pkg-includes">
-          <li>Chennai ↔ Bangalore / Mysuru</li>
-          <li>Chennai ↔ Madurai / Rameswaram</li>
-          <li>Chennai ↔ Ooty / Kodaikanal</li>
-          <li>Chennai ↔ Vizag / Tirupati</li>
-          <li>AC Sedan, Innova or Tempo Traveller</li>
-          <li>Experienced Driver, Flexible Stops</li>
-        </ul>
-        <button class="pkg-btn" onclick="(function(e){e.stopPropagation();window.location='#contact';})(event)">Enquire Now</button>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -372,7 +386,6 @@
     <p class="section-sub">From the coastlines of Tamil Nadu to the hills of Kerala and the heritage of Karnataka — we take you there in comfort.</p>
   </div>
   <div class="pilgrim-grid">
-
     <div class="pilgrim-card featured reveal">
       <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80');"></div>
       <div class="pilgrim-overlay">
@@ -381,7 +394,6 @@
         <div class="pilgrim-loc">🌿 Munnar · Alleppey · Wayanad · Kovalam &nbsp;|&nbsp; 4–7 Days</div>
       </div>
     </div>
-
     <div class="pilgrim-card reveal reveal-delay-1">
       <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=800&q=80');"></div>
       <div class="pilgrim-overlay">
@@ -390,7 +402,6 @@
         <div class="pilgrim-loc">📍 Mysuru · Coorg · Hampi · Bengaluru</div>
       </div>
     </div>
-
     <div class="pilgrim-card reveal reveal-delay-2">
       <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80');"></div>
       <div class="pilgrim-overlay">
@@ -399,7 +410,6 @@
         <div class="pilgrim-loc">📍 Vizag · Araku Valley · Tirupati</div>
       </div>
     </div>
-
     <div class="pilgrim-card reveal reveal-delay-1">
       <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80');"></div>
       <div class="pilgrim-overlay">
@@ -408,7 +418,6 @@
         <div class="pilgrim-loc">📍 Pondicherry · Rameswaram · Kanyakumari</div>
       </div>
     </div>
-
     <div class="pilgrim-card reveal reveal-delay-2">
       <div class="pilgrim-bg" style="background-image: url('https://images.unsplash.com/photo-1609766857584-4eba44d19b41?w=800&q=80');"></div>
       <div class="pilgrim-overlay">
@@ -417,7 +426,85 @@
         <div class="pilgrim-loc">📍 The Nilgiris, Tamil Nadu</div>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- DESTINATION CARD SLIDER -->
+<section class="destinations-section">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">Popular Destinations</div>
+    <h2 class="section-title">Explore <em>Tamil Nadu</em> & Beyond</h2>
+    <p class="section-sub" style="margin:0 auto;">Discover breathtaking places — all reachable with Sri Varu Travels.</p>
+  </div>
+  <div class="dest-slider-wrap reveal">
+    <div class="dest-track" id="destTrack">
+
+      <div class="dest-card">
+        <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1609766857584-4eba44d19b41?w=600&q=80')"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">🏔️ Hill Station</div>
+          <h4>Kodaikanal</h4>
+          <p>~480 km from Chennai</p>
+        </div>
+        <a href="#contact" class="dest-book-btn">Book Trip →</a>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80')"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">🌊 Beach Town</div>
+          <h4>Pondicherry</h4>
+          <p>~160 km from Chennai</p>
+        </div>
+        <a href="#contact" class="dest-book-btn">Book Trip →</a>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1568454537842-d933259bb258?w=600&q=80')"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">🛕 Temple City</div>
+          <h4>Madurai</h4>
+          <p>~460 km from Chennai</p>
+        </div>
+        <a href="#contact" class="dest-book-btn">Book Trip →</a>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1621277224630-81321e968745?w=600&q=80')"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">🏙️ Rock Fort City</div>
+          <h4>Trichy</h4>
+          <p>~330 km from Chennai</p>
+        </div>
+        <a href="#contact" class="dest-book-btn">Book Trip →</a>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1614089519459-1d85f2b62575?w=600&q=80')"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">🌅 Sacred Island</div>
+          <h4>Rameswaram</h4>
+          <p>~570 km from Chennai</p>
+        </div>
+        <a href="#contact" class="dest-book-btn">Book Trip →</a>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80')"></div>
+        <div class="dest-overlay">
+          <div class="dest-tag">🌿 Tea Gardens</div>
+          <h4>Ooty</h4>
+          <p>~540 km from Chennai</p>
+        </div>
+        <a href="#contact" class="dest-book-btn">Book Trip →</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="dest-nav">
+    <button class="dest-btn" id="destPrev">←</button>
+    <div class="dest-dots" id="destDots"></div>
+    <button class="dest-btn" id="destNext">→</button>
   </div>
 </section>
 
@@ -516,7 +603,7 @@
       </iframe>
     </div>
     <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:16px;margin-top:14px">
-      <strong style="color:#fff;font-size:14px;display:block;margin-bottom:4px">&#x1F4CD; Sri Varu Travels — Parthiban</strong>
+      <strong style="color:#fff;font-size:14px;display:block;margin-bottom:4px">📍 Sri Varu Travels — Parthiban</strong>
       <p style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.7">No.4A Sekkilar Street, Nethaji Avenue,<br>Nerkundram, Koyembedu, Chennai – 600107</p>
     </div>
   </div>
@@ -553,7 +640,10 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="logo" style="margin-bottom:0;">
-        <div class="logo-icon">🚗</div>
+        <div class="logo-icon">
+          <img src="logo.png" alt="Sri Varu Travels Logo" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="logo-fallback">SV</span>
+        </div>
         <div class="logo-text">
           <strong style="color:white;">Sri Varu Travels</strong>
           <span style="color:rgba(255,255,255,0.5);">Nerkundram, Chennai</span>
@@ -592,7 +682,7 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="tel:+917299921960">+91 72999 21960</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#a1c8cfc7cee1d2d3c8d7c0d3d4d5d3c0d7c4cdd28fc2cecc"><span class="__cf_email__" data-cfemail="4920272f26093a3b203f283b3c3d3b283f2c253a672a2624">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:info@srivarutravels.com">info@srivarutravels.com</a></li>
         <li><a href="https://maps.app.goo.gl/5MawuQbNCD5xZ2nu7" target="_blank">Nerkundram, Chennai 600107</a></li>
         <li><a href="https://wa.me/917299921960">WhatsApp Us</a></li>
       </ul>
