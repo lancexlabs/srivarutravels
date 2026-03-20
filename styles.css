@@ -466,3 +466,18 @@ footer { background: #0a2e1e; color: white; padding: 56px var(--pad-x) 26px; }
   .hero h1 { font-size: 22px; }
   .booking-form-grid { padding: 16px; }
 }
+/* UPDATE this existing rule in styles.css */
+.hero-card-float {
+  width: 370px;          /* match the phone-like aspect ratio */
+  height: 520px;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,.4);
+  flex-shrink: 0;
+}
+
+/* Remove the ::after overlay on hero-card-float so the video shows cleanly */
+.hero-card-float::after {
+  display: none;
+}
