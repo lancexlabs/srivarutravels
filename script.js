@@ -12,7 +12,6 @@ window.addEventListener('scroll', () => {
   progressBar.style.width = (s / total * 100) + '%';
   backTop.classList.toggle('show', s > 400);
   nav.classList.toggle('scrolled', s > 60);
-  if (expandedPkg && Math.abs(s - lastScrollY) > 60) closePkg({}, expandedPkg);
   lastScrollY = s;
 });
 
@@ -39,7 +38,7 @@ hamburger.addEventListener('click', () => {
 });
 
 // ── SCROLL REVEAL ──
-const revealEls = document.querySelectorAll('.reveal, .why-item, .testi-card');
+const revealEls = document.querySelectorAll('.reveal, .why-item');
 const revObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
@@ -81,16 +80,16 @@ document.querySelectorAll('.service-card').forEach(card => {
 });
 
 // ── PACKAGE EXPAND / COLLAPSE ──
-function expandPkg(id) {
+function expandPkg(e, id) {
+  if (e && e.stopPropagation) e.stopPropagation();
   if (expandedPkg) return;
   const card = document.getElementById(id);
   savedScroll = window.scrollY;
-  savedRect = card.getBoundingClientRect();
+  savedRect = card.getBoundingClientRect(); // viewport-relative
 
-  // Force-show if still in reveal animation
   card.classList.add('visible');
 
-  // Snapshot position then animate to fullscreen
+  // Snapshot current viewport position (no scroll offset needed — we use fixed positioning)
   card.style.cssText = `
     position: fixed;
     top: ${savedRect.top}px;
@@ -102,6 +101,7 @@ function expandPkg(id) {
     transition: none;
   `;
   card.offsetHeight; // force reflow
+
   card.style.cssText = `
     position: fixed;
     top: 0;
@@ -110,7 +110,7 @@ function expandPkg(id) {
     height: 100dvh;
     border-radius: 0;
     z-index: 2000;
-    transition: all 0.55s cubic-bezier(0.4,0,0.2,1);
+    transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
   `;
   card.classList.add('expanded');
   document.getElementById('pkgOverlay').classList.add('active');
@@ -122,6 +122,8 @@ function closePkg(e, id) {
   if (e && e.stopPropagation) e.stopPropagation();
   const card = document.getElementById(id);
   card.classList.remove('expanded');
+
+  // Animate back to original viewport position
   card.style.cssText = `
     position: fixed;
     top: ${savedRect.top}px;
@@ -130,7 +132,7 @@ function closePkg(e, id) {
     height: ${savedRect.height}px;
     border-radius: 28px;
     z-index: 2000;
-    transition: all 0.55s cubic-bezier(0.4,0,0.2,1);
+    transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
   `;
   setTimeout(() => {
     card.style.cssText = '';
@@ -138,40 +140,166 @@ function closePkg(e, id) {
     document.body.style.overflow = '';
     expandedPkg = null;
     window.scrollTo(0, savedScroll);
-  }, 560);
+  }, 460);
 }
 
 document.getElementById('pkgOverlay').addEventListener('click', () => {
   if (expandedPkg) closePkg({}, expandedPkg);
 });
 
-// ── TESTIMONIAL SLIDER ──
-const track = document.getElementById('testiTrack');
-const testiCards = track.querySelectorAll('.testi-card');
-const testiDots = document.getElementById('testiDots');
-let testiIndex = 0;
-const perView = () => window.innerWidth > 1024 ? 3 : window.innerWidth > 600 ? 2 : 1;
-const maxTesti = () => Math.max(0, testiCards.length - perView());
+// ── QUICK TRIP PLANNER → WHATSAPP ──
+function searchTrip() {
+  const tripType = document.getElementById('bf-triptype').value;
+  const from = document.getElementById('bf-from').value.trim();
+  const to = document.getElementById('bf-to').value.trim();
+  const date = document.getElementById('bf-date').value;
+  const vehicle = document.getElementById('bf-vehicle').value;
 
-function slideTesti(dir) {
-  const max = maxTesti();
-  testiIndex = (dir === 'auto')
-    ? (testiIndex >= max ? 0 : testiIndex + 1)
-    : Math.max(0, Math.min(testiIndex + dir, max));
-  const cardW = track.querySelector('.testi-card').offsetWidth + 28;
-  track.style.transform = `translateX(-${testiIndex * cardW}px)`;
-  const dots = testiDots.querySelectorAll('span');
-  dots.forEach((d, i) => {
-    d.style.width = i === Math.min(testiIndex, dots.length - 1) ? '24px' : '8px';
-    d.style.borderRadius = i === Math.min(testiIndex, dots.length - 1) ? '4px' : '50%';
-    d.style.background = i === Math.min(testiIndex, dots.length - 1) ? 'var(--green)' : '#ddd';
-  });
+  let msg = `Hi Sri Varu Travels! I'd like to book a trip.\n\n`;
+  msg += `📌 Trip Type: ${tripType}\n`;
+  if (from) msg += `🚩 From: ${from}\n`;
+  if (to)   msg += `🏁 To: ${to}\n`;
+  if (date) msg += `📅 Date: ${date}\n`;
+  msg += `🚗 Vehicle: ${vehicle}\n\nPlease share the fare and availability.`;
+
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/917299921960?text=${encoded}`, '_blank');
 }
 
-document.getElementById('testiNext').addEventListener('click', () => slideTesti(1));
-document.getElementById('testiPrev').addEventListener('click', () => slideTesti(-1));
-if (testiDots) testiDots.querySelectorAll('span').forEach((d, i) => d.addEventListener('click', () => { testiIndex = i; slideTesti(0); }));
-setInterval(() => slideTesti('auto'), 4500);
+// ── FLEET CATEGORY SLIDESHOWS ──
+document.querySelectorAll('.fcc-slideshow').forEach(ss => {
+  const slides = ss.querySelectorAll('.fcc-slide');
+  const dotsWrap = ss.querySelector('.fcc-dots');
+  let current = 0;
+  let timer = null;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'fcc-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', e => { e.stopPropagation(); goTo(i); });
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dotsWrap.querySelectorAll('.fcc-dot')[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsWrap.querySelectorAll('.fcc-dot')[current].classList.add('active');
+  }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(() => goTo(current + 1), 3200);
+  }
+  function stopAuto() {
+    if (timer) clearInterval(timer);
+  }
+
+  ss.querySelector('.fcc-prev').addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+  ss.querySelector('.fcc-next').addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+
+  ss.addEventListener('mouseenter', stopAuto);
+  ss.addEventListener('mouseleave', startAuto);
+
+  startAuto();
+});
+
+// ── TESTIMONIAL SLIDER ──
+(function () {
+  const viewport = document.querySelector('.testi-viewport');
+  const track    = document.getElementById('testiTrack');
+  const dotsWrap = document.getElementById('testiDots');
+  if (!track || !viewport) return;
+
+  const cards = Array.from(track.querySelectorAll('.testi-card'));
+  const TOTAL  = cards.length;
+  const GAP    = 24; // must match CSS gap
+  let current  = 0;
+  let autoTimer = null;
+
+  // How many cards fit in view at current breakpoint
+  function perView() {
+    const w = window.innerWidth;
+    if (w > 1024) return 3;
+    if (w > 600)  return 2;
+    return 1;
+  }
+
+  // Compute card width so cards fill the viewport exactly (accounting for gaps)
+  function cardWidth() {
+    const pv   = perView();
+    const vw   = viewport.offsetWidth;
+    return (vw - GAP * (pv - 1)) / pv;
+  }
+
+  function maxIndex() {
+    return Math.max(0, TOTAL - perView());
+  }
+
+  // Size every card and move track
+  function render() {
+    const cw = cardWidth();
+    // Set CSS variable so the flex-basis in CSS picks it up
+    cards.forEach(c => { c.style.flex = `0 0 ${cw}px`; });
+    track.style.transform = `translateX(-${current * (cw + GAP)}px)`;
+    updateDots();
+  }
+
+  // Build dots dynamically (one per "page")
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    const pages = maxIndex() + 1;
+    for (let i = 0; i < pages; i++) {
+      const d = document.createElement('button');
+      d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateDots() {
+    const dots = dotsWrap.querySelectorAll('.testi-dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    render();
+  }
+
+  function next() { goTo(current >= maxIndex() ? 0 : current + 1); }
+  function prev() { goTo(current <= 0 ? maxIndex() : current - 1); }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(next, 4500);
+  }
+  function stopAuto() { clearInterval(autoTimer); }
+
+  document.getElementById('testiNext').addEventListener('click', () => { next(); startAuto(); });
+  document.getElementById('testiPrev').addEventListener('click', () => { prev(); startAuto(); });
+
+  // Pause on hover
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+
+  // Rebuild on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { buildDots(); render(); }, 120);
+  });
+
+  // Init — wait one frame so layout is settled
+  requestAnimationFrame(() => {
+    buildDots();
+    render();
+    startAuto();
+  });
+})();
 
 // ── PILGRIM / STATE CARD CURSOR PARALLAX ──
 document.querySelectorAll('.pilgrim-card').forEach(card => {
@@ -187,38 +315,6 @@ document.querySelectorAll('.pilgrim-card').forEach(card => {
     if (bg) bg.style.transform = '';
   });
 });
-
-// ── FLEET SLIDER ──
-(function () {
-  const ft = document.getElementById('fleetTrack');
-  const dotsWrap = document.getElementById('fleetDots');
-  if (!ft) return;
-  const cards = ft.querySelectorAll('.fleet-card');
-  const perView = () => window.innerWidth > 1100 ? 4 : window.innerWidth > 700 ? 2 : 1;
-  let fIdx = 0;
-  if (dotsWrap) {
-    for (let i = 0; i < cards.length; i++) {
-      const d = document.createElement('div');
-      d.className = 'fleet-dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => goFleet(i));
-      dotsWrap.appendChild(d);
-    }
-  }
-  function goFleet(idx) {
-    const max = Math.max(0, cards.length - perView());
-    fIdx = Math.max(0, Math.min(idx, max));
-    const w = ft.parentElement.offsetWidth;
-    const cardW = (w - (perView() - 1) * 24) / perView();
-    ft.style.transform = `translateX(-${fIdx * (cardW + 24)}px)`;
-    cards.forEach(c => { c.style.flex = `0 0 ${cardW}px`; });
-    if (dotsWrap) dotsWrap.querySelectorAll('.fleet-dot').forEach((d, i) => d.classList.toggle('active', i === fIdx));
-  }
-  window.addEventListener('resize', () => goFleet(fIdx));
-  setTimeout(() => goFleet(0), 100);
-  document.getElementById('fleetNext').addEventListener('click', () => goFleet(fIdx + 1));
-  document.getElementById('fleetPrev').addEventListener('click', () => goFleet(fIdx - 1));
-  setInterval(() => goFleet(fIdx + 1 > Math.max(0, cards.length - perView()) ? 0 : fIdx + 1), 3500);
-})();
 
 // ── DESTINATION SLIDER ──
 (function () {
@@ -242,8 +338,8 @@ document.querySelectorAll('.pilgrim-card').forEach(card => {
     const max = Math.max(0, cards.length - perView());
     dIdx = Math.max(0, Math.min(idx, max));
     const w = dt.parentElement.offsetWidth;
-    const cardW = (w - (perView() - 1) * 24) / perView();
-    dt.style.transform = `translateX(-${dIdx * (cardW + 24)}px)`;
+    const cardW = (w - (perView() - 1) * 22) / perView();
+    dt.style.transform = `translateX(-${dIdx * (cardW + 22)}px)`;
     cards.forEach(c => { c.style.flex = `0 0 ${cardW}px`; });
     if (dotsWrap) dotsWrap.querySelectorAll('.dest-dot').forEach((d, i) => d.classList.toggle('active', i === dIdx));
   }
