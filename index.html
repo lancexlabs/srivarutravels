@@ -105,7 +105,7 @@
     <div class="booking-form-grid">
       <div class="bf-field">
         <label>Trip Type</label>
-        <select id="bf-triptype">
+        <select required>
           <option>One Way</option>
           <option>Round Trip</option>
           <option>Airport Transfer</option>
@@ -114,19 +114,19 @@
       </div>
       <div class="bf-field">
         <label>From</label>
-        <input type="text" id="bf-from" placeholder="Pickup location" required>
+        <input type="text" placeholder="Pickup location" required >
       </div>
       <div class="bf-field">
         <label>To</label>
-        <input type="text" id="bf-to" placeholder="Drop location" required>
+        <input type="text" placeholder="Drop location" required>
       </div>
       <div class="bf-field">
         <label>Travel Date</label>
-        <input type="date" id="bf-date" required>
+        <input type="date" required>
       </div>
       <div class="bf-field">
-        <label>Vehicle</label>
-        <select id="bf-vehicle" required>
+        <label >Vehicle</label>
+        <select required>
           <option>Sedan</option>
           <option>SUV / Innova</option>
           <option>Tempo Traveller</option>
@@ -135,12 +135,11 @@
       </div>
       <div class="bf-field bf-submit-wrap">
         <label>&nbsp;</label>
-        <button class="bb-btn" onclick="searchTrip()">Book Now →</button>
+        <button class="bb-btn">Search Trips →</button>
       </div>
     </div>
   </div>
 </section>
-
 <section class="glass-cards-section">
   <div class="glass-cards-grid">
     <div class="glass-card reveal reveal-delay-1">
