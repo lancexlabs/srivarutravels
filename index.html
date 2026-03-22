@@ -50,7 +50,7 @@
     <div class="hero-stats">
       <div class="stat"><strong>8K+</strong><span>Happy Clients</span></div>
       <div class="stat"><strong>30+</strong><span>Years Experience</span></div>
-      <div class="stat"><strong>24/7</strong><span>Services Ayailability</span></div>
+      <div class="stat"><strong>24/7</strong><span>Availability</span></div>
     </div>
   </div>
   <div class="hero-image-wrap">
@@ -105,7 +105,7 @@
     <div class="booking-form-grid">
       <div class="bf-field">
         <label>Trip Type</label>
-        <select required>
+        <select id="bf-triptype">
           <option>One Way</option>
           <option>Round Trip</option>
           <option>Airport Transfer</option>
@@ -114,19 +114,19 @@
       </div>
       <div class="bf-field">
         <label>From</label>
-        <input type="text" placeholder="Pickup location" required >
+        <input type="text" id="bf-from" placeholder="Pickup location">
       </div>
       <div class="bf-field">
         <label>To</label>
-        <input type="text" placeholder="Drop location" required>
+        <input type="text" id="bf-to" placeholder="Drop location">
       </div>
       <div class="bf-field">
         <label>Travel Date</label>
-        <input type="date" required>
+        <input type="date" id="bf-date">
       </div>
       <div class="bf-field">
-        <label >Vehicle</label>
-        <select required>
+        <label>Vehicle</label>
+        <select id="bf-vehicle">
           <option>Sedan</option>
           <option>SUV / Innova</option>
           <option>Tempo Traveller</option>
@@ -135,11 +135,12 @@
       </div>
       <div class="bf-field bf-submit-wrap">
         <label>&nbsp;</label>
-        <button class="bb-btn">Search Trips →</button>
+        <button class="bb-btn" onclick="searchTrip()">Book Now →</button>
       </div>
     </div>
   </div>
 </section>
+
 <section class="glass-cards-section">
   <div class="glass-cards-grid">
     <div class="glass-card reveal reveal-delay-1">
