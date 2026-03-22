@@ -52,7 +52,7 @@ if (heroStats) {
     if (e.isIntersecting && !counted) {
       counted = true;
       [{ idx: 0, target: 5000, fmt: v => Math.round(v / 1000) + 'K+' },
-       { idx: 1, target: 8, fmt: v => Math.round(v) + '+' }
+       { idx: 1, target: 30, fmt: v => Math.round(v) + '+' }
       ].forEach(({ idx, target, fmt }) => {
         const el = document.querySelectorAll('.stat strong')[idx];
         if (!el) return;
