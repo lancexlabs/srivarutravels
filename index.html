@@ -505,17 +505,42 @@
   <div class="contact-form reveal reveal-delay-2">
     <h3>Send Us a Message</h3>
     <div class="form-row">
-      <div class="form-field"><label>Your Name</label><input type="text" placeholder="e.g. Ramesh Kumar"></div>
-      <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="form-field">
+        <label>Your Name</label>
+        <input type="text" id="cf-name" placeholder="e.g. Ramesh Kumar">
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input type="tel" id="cf-phone" placeholder="+91 XXXXX XXXXX">
+      </div>
     </div>
-    <div class="form-field"><label>Trip Type</label>
-      <select><option>Select trip type...</option><option>Local City Ride</option><option>Outstation Trip</option><option>Airport Transfer</option><option>Pilgrimage Tour</option><option>Sri Lanka Wedding Package</option><option>Corporate Travel</option><option>Kerala / Tourist Package</option></select>
+    <div class="form-field">
+      <label>Trip Type</label>
+      <select id="cf-triptype">
+        <option>Select trip type...</option>
+        <option>Local City Ride</option>
+        <option>Outstation Trip</option>
+        <option>Airport Transfer</option>
+        <option>Pilgrimage Tour</option>
+        <option>Sri Lanka Wedding Package</option>
+        <option>Corporate Travel</option>
+        <option>Kerala / Tourist Package</option>
+      </select>
     </div>
     <div class="form-row">
-      <div class="form-field"><label>From</label><input type="text" placeholder="Pickup city / location"></div>
-      <div class="form-field"><label>Travel Date</label><input type="date"></div>
+      <div class="form-field">
+        <label>From</label>
+        <input type="text" id="cf-from" placeholder="Pickup city / location">
+      </div>
+      <div class="form-field">
+        <label>Travel Date</label>
+        <input type="date" id="cf-date">
+      </div>
     </div>
-    <div class="form-field"><label>Message</label><textarea placeholder="Tell us more about your trip requirements..."></textarea></div>
+    <div class="form-field">
+      <label>Message</label>
+      <textarea id="cf-message" placeholder="Tell us more about your trip requirements..."></textarea>
+    </div>
     <button class="form-submit" onclick="submitForm()">Send Enquiry →</button>
   </div>
 </section>
@@ -538,7 +563,7 @@
     </div>
     <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Outstation Tours</a></li><li><a href="#services">Pilgrimage Trips</a></li><li><a href="#services">Wedding & Events</a></li><li><a href="#services">Airport Transfers</a></li><li><a href="#services">Corporate Rentals</a></li><li><a href="#services">Group Travel</a></li></ul></div>
     <div class="footer-col"><h4>Packages</h4><ul><li><a href="#packages">Sri Lanka Wedding</a></li><li><a href="#pilgrimage">Kerala Tour</a></li><li><a href="#pilgrimage">Karnataka Getaway</a></li><li><a href="#pilgrimage">Andhra Pradesh Tour</a></li><li><a href="#pilgrimage">Ooty & Kodaikanal</a></li></ul></div>
-    <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+917299921960">+91 72999 21960</a></li><li><a href="mailto:srivarutravels4425@gmail.com>srivarutravels4425@gmail.com</a></li><li><a href="https://maps.app.goo.gl/5MawuQbNCD5xZ2nu7" target="_blank">Nerkundram, Chennai 600107</a></li><li><a href="https://wa.me/917299921960">WhatsApp Us</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+917299921960">+91 72999 21960</a></li><li><a href="mailto:srivarutravels4425@gmail.com">srivarutravels4425@gmail.com</a></li><li><a href="https://maps.app.goo.gl/5MawuQbNCD5xZ2nu7" target="_blank">Nerkundram, Chennai 600107</a></li><li><a href="https://wa.me/917299921960">WhatsApp Us</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p>© 2026 Sri Varu Travels. All Rights Reserved.</p>
@@ -547,6 +572,48 @@
 </footer>
 
 <a href="https://wa.me/917299921960" class="whatsapp-float" target="_blank" title="WhatsApp Us">💬</a>
+
 <script src="script.js"></script>
+<script>
+function submitForm() {
+  const name     = document.getElementById('cf-name')?.value.trim() || '';
+  const phone    = document.getElementById('cf-phone')?.value.trim() || '';
+  const tripType = document.getElementById('cf-triptype')?.value || '';
+  const from     = document.getElementById('cf-from')?.value.trim() || '';
+  const date     = document.getElementById('cf-date')?.value || '';
+  const message  = document.getElementById('cf-message')?.value.trim() || '';
+
+  if (!name || !phone) {
+    alert('Please enter your name and phone number.');
+    return;
+  }
+
+  const formattedDate = date
+    ? new Date(date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+    : 'Not specified';
+
+  const waMessage =
+    `🚗 *New Booking Enquiry — Sri Varu Travels*\n\n` +
+    `👤 *Name:* ${name}\n` +
+    `📞 *Phone:* ${phone}\n` +
+    `🗺️ *Trip Type:* ${tripType}\n` +
+    `📍 *From:* ${from || 'Not specified'}\n` +
+    `📅 *Travel Date:* ${formattedDate}\n` +
+    `💬 *Message:* ${message || 'No additional message'}`;
+
+  window.open(`https://wa.me/917299921960?text=${encodeURIComponent(waMessage)}`, '_blank');
+
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = "✓ Sent! We'll call you soon.";
+  btn.style.background = 'var(--green-light)';
+  btn.style.transform = 'scale(1.02)';
+  setTimeout(() => {
+    btn.textContent = 'Send Enquiry →';
+    btn.style.background = '';
+    btn.style.transform = '';
+  }, 3000);
+}
+</script>
+
 </body>
 </html>
