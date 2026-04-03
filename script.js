@@ -353,9 +353,46 @@ document.querySelectorAll('.pilgrim-card').forEach(card => {
 
 // ── FORM SUBMIT ──
 function submitForm() {
+  // Collect form field values
+  const name = document.querySelector('.contact-form .form-row:first-of-type .form-field:first-child input').value.trim();
+  const phone = document.querySelector('.contact-form .form-row:first-of-type .form-field:last-child input').value.trim();
+  const tripType = document.querySelector('.contact-form select').value;
+  const from = document.querySelector('.contact-form .form-row:last-of-type .form-field:first-child input').value.trim();
+  const date = document.querySelector('.contact-form .form-row:last-of-type .form-field:last-child input').value;
+  const message = document.querySelector('.contact-form textarea').value.trim();
+
+  // Basic validation
+  if (!name || !phone) {
+    alert('Please enter your name and phone number.');
+    return;
+  }
+
+  // Build WhatsApp message
+  const formattedDate = date ? new Date(date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Not specified';
+
+  const waMessage =
+    `🚗 *New Booking Enquiry — Sri Varu Travels*\n\n` +
+    `👤 *Name:* ${name}\n` +
+    `📞 *Phone:* ${phone}\n` +
+    `🗺️ *Trip Type:* ${tripType}\n` +
+    `📍 *From:* ${from || 'Not specified'}\n` +
+    `📅 *Travel Date:* ${formattedDate}\n` +
+    `💬 *Message:* ${message || 'No additional message'}`;
+
+  const encoded = encodeURIComponent(waMessage);
+  const waURL = `https://wa.me/917299921960?text=${encoded}`;
+
+  // Visual feedback on button
   const btn = document.querySelector('.form-submit');
   btn.textContent = "✓ Sent! We'll call you soon.";
   btn.style.background = 'var(--green-light)';
   btn.style.transform = 'scale(1.02)';
-  setTimeout(() => { btn.textContent = 'Send Enquiry →'; btn.style.background = ''; btn.style.transform = ''; }, 3000);
+  setTimeout(() => {
+    btn.textContent = 'Send Enquiry →';
+    btn.style.background = '';
+    btn.style.transform = '';
+  }, 3000);
+
+  // Open WhatsApp
+  window.open(waURL, '_blank');
 }
