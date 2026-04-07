@@ -1,3 +1,8 @@
+// ── PAGE LOADING REMOVE ──
+window.addEventListener('load', () => {
+  document.body.classList.remove('page-loading');
+});
+
 // ── SCROLL PROGRESS + BACK TOP ──
 const progressBar = document.getElementById('scroll-progress');
 const backTop = document.getElementById('back-top');
@@ -85,11 +90,10 @@ function expandPkg(e, id) {
   if (expandedPkg) return;
   const card = document.getElementById(id);
   savedScroll = window.scrollY;
-  savedRect = card.getBoundingClientRect(); // viewport-relative
+  savedRect = card.getBoundingClientRect();
 
   card.classList.add('visible');
 
-  // Snapshot current viewport position (no scroll offset needed — we use fixed positioning)
   card.style.cssText = `
     position: fixed;
     top: ${savedRect.top}px;
@@ -100,7 +104,7 @@ function expandPkg(e, id) {
     z-index: 2000;
     transition: none;
   `;
-  card.offsetHeight; // force reflow
+  card.offsetHeight;
 
   card.style.cssText = `
     position: fixed;
@@ -123,7 +127,6 @@ function closePkg(e, id) {
   const card = document.getElementById(id);
   card.classList.remove('expanded');
 
-  // Animate back to original viewport position
   card.style.cssText = `
     position: fixed;
     top: ${savedRect.top}px;
@@ -173,7 +176,6 @@ document.querySelectorAll('.fcc-slideshow').forEach(ss => {
   let current = 0;
   let timer = null;
 
-  // Build dots
   slides.forEach((_, i) => {
     const d = document.createElement('div');
     d.className = 'fcc-dot' + (i === 0 ? ' active' : '');
@@ -215,11 +217,10 @@ document.querySelectorAll('.fcc-slideshow').forEach(ss => {
 
   const cards = Array.from(track.querySelectorAll('.testi-card'));
   const TOTAL  = cards.length;
-  const GAP    = 24; // must match CSS gap
+  const GAP    = 24;
   let current  = 0;
   let autoTimer = null;
 
-  // How many cards fit in view at current breakpoint
   function perView() {
     const w = window.innerWidth;
     if (w > 1024) return 3;
@@ -227,7 +228,6 @@ document.querySelectorAll('.fcc-slideshow').forEach(ss => {
     return 1;
   }
 
-  // Compute card width so cards fill the viewport exactly (accounting for gaps)
   function cardWidth() {
     const pv   = perView();
     const vw   = viewport.offsetWidth;
@@ -238,16 +238,13 @@ document.querySelectorAll('.fcc-slideshow').forEach(ss => {
     return Math.max(0, TOTAL - perView());
   }
 
-  // Size every card and move track
   function render() {
     const cw = cardWidth();
-    // Set CSS variable so the flex-basis in CSS picks it up
     cards.forEach(c => { c.style.flex = `0 0 ${cw}px`; });
     track.style.transform = `translateX(-${current * (cw + GAP)}px)`;
     updateDots();
   }
 
-  // Build dots dynamically (one per "page")
   function buildDots() {
     dotsWrap.innerHTML = '';
     const pages = maxIndex() + 1;
@@ -282,18 +279,15 @@ document.querySelectorAll('.fcc-slideshow').forEach(ss => {
   document.getElementById('testiNext').addEventListener('click', () => { next(); startAuto(); });
   document.getElementById('testiPrev').addEventListener('click', () => { prev(); startAuto(); });
 
-  // Pause on hover
   viewport.addEventListener('mouseenter', stopAuto);
   viewport.addEventListener('mouseleave', startAuto);
 
-  // Rebuild on resize
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => { buildDots(); render(); }, 120);
   });
 
-  // Init — wait one frame so layout is settled
   requestAnimationFrame(() => {
     buildDots();
     render();
@@ -389,8 +383,4 @@ function submitForm() {
     btn.style.background = '';
     btn.style.transform = '';
   }, 3000);
-}
-
-  // Open WhatsApp
-  window.open(waURL, '_blank');
 }
